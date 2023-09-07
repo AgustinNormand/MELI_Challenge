@@ -1,13 +1,14 @@
 import pytest
 from fastapi.testclient import TestClient
-from criticity_api import Criticity_API
 from fastapi import FastAPI
 import json
+from app.Secapp import Secapp
+
 
 def client_setup():
     app = FastAPI()
-    criticaly_api = Criticity_API()
-    app.include_router(criticaly_api.router)
+    secapp = Secapp()
+    app.include_router(secapp.router)
 
     client = TestClient(app)
     return client

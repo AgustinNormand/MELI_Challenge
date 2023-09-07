@@ -1,15 +1,13 @@
-import uvicorn
 from fastapi import FastAPI, HTTPException, Header, APIRouter
 from pydantic import BaseModel
 from datetime import datetime
 from itertools import count
 
-
 class StateChange(BaseModel):
     current_status: int
     Change_at: datetime
 
-class Criticity_API():
+class Secapp():
     def __init__(self):
         self.processed_id_counter = count(0)
         self.clients_apps_last_update_timestamps = {}
@@ -61,10 +59,3 @@ class Criticity_API():
             self.last_criticity_update_value = update_value
 
         return {"processed_id": processed_id}
-
-
-if __name__ == "__main__":
-    app = FastAPI()
-    criticaly_api = Criticity_API()
-    app.include_router(criticaly_api.router)
-    uvicorn.run(app, host="0.0.0.0", port=8000)
