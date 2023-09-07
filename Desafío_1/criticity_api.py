@@ -12,10 +12,12 @@ class StateChange(BaseModel):
 class Criticity_API():
     def __init__(self):
         self.processed_id_counter = count(0)
-        self.clients_apps_requests_timestamps = {}
+        self.clients_apps_last_update_timestamps = {}
         self.last_criticity_update_value = None
         self.last_criticity_update_timestamp = None
         self.last_criticity_update_processed_id = None
+
+        self.clients_apps_requests_timestamps = {}
 
         self.router = APIRouter()
         self.router.add_api_route("/secapp/update", self.get_last_state, methods=["GET"])
@@ -25,18 +27,20 @@ class Criticity_API():
         if not App_name:
             raise HTTPException(status_code=400, detail="Falta el encabezado App-name")
 
+        self.clients_apps_requests_timestamps[App_name] = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+
         if self.last_criticity_update_value is None:
             return {}
 
-        if App_name in self.clients_apps_requests_timestamps.keys():
-            if self.clients_apps_requests_timestamps[App_name] < self.last_criticity_update_timestamp:
+        if App_name in self.clients_apps_last_update_timestamps.keys():
+            if self.clients_apps_last_update_timestamps[App_name] < self.last_criticity_update_timestamp:
                 return {"current_status": self.last_criticity_update_value,
                         "status_change_id": self.last_criticity_update_processed_id,
                         "Change_at": self.last_criticity_update_timestamp}
             else:
                 return {}
         else:
-            self.clients_apps_requests_timestamps[App_name] = self.last_criticity_update_timestamp
+            self.clients_apps_last_update_timestamps[App_name] = self.last_criticity_update_timestamp
 
             return {"current_status": self.last_criticity_update_value,
                     "status_change_id": self.last_criticity_update_processed_id,
