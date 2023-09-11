@@ -151,6 +151,23 @@ Obtenemos:
 
 ![answer_question_5](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/3645e56d-89e8-404d-965e-edf432f1d5de)
 
+### Preguntas adicionales
+
+Algunas preguntas similares a las anteriores, pero que si se pueden calcular, por haber datos disponibles, serían por ejemplo:
+
+#### 6. ¿Cuál fue el uptime total de las aplicaciones app2 y app5 en Q1 2022?
+
+Estableciendo el intervalo de tiempo:
+
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/b7af7784-f606-4325-a795-2b28689bb700)
+
+Obtenemos:
+
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/d933aebd-1540-4c33-9bfe-bdeffc51d3d3)
+
+
+
+
 ## Pendientes / Trabajos Futuros
 
 * Usando los timestamps de los registros anteriores a la linea de error "app4-error", estimar la fecha de dicha linea, agregarlo a un bucket de InfluxDB y graficarlo en Grafana.
