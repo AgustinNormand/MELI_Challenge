@@ -165,8 +165,24 @@ Obtenemos:
 
 ![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/d933aebd-1540-4c33-9bfe-bdeffc51d3d3)
 
+### 7. ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2022?
 
+Estableciendo el intervalo de tiempo:
 
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/b7af7784-f606-4325-a795-2b28689bb700)
+
+Obtenemos:
+
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/600038a5-4ad7-4bb2-aa44-3d665cccaa42)
+
+### 8. ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2023?
+
+Estableciendo el intervalo de tiempo:
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/0358286c-eeb8-4903-9db4-ebe402427bd4)
+
+Obtenemos:
+
+![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/1ff63a70-3abf-46ef-9c92-15af4d87ef07)
 
 ## Pendientes / Trabajos Futuros
 
