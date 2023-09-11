@@ -4,8 +4,6 @@ import logging
 from dotenv import dotenv_values
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
-
-FILENAME = "Datos_uptime_challenge.tsv"
 class DowntimeFileAnalyzer:
     def __init__(self):
         logging.basicConfig(filename="app.log",
@@ -100,7 +98,7 @@ class DowntimeFileAnalyzer:
 
     def analyze_file(self):
         # Abre el archivo en modo lectura
-        with open(FILENAME, 'r') as f:
+        with open(self.config["DATA_FILENAME"], 'r') as f:
             # Itera a través de cada línea en el archivo
             for line in f:
                 try:
