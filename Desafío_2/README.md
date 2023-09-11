@@ -178,6 +178,7 @@ Obtenemos:
 ### 8. ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2023?
 
 Estableciendo el intervalo de tiempo:
+
 ![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/0358286c-eeb8-4903-9db4-ebe402427bd4)
 
 Obtenemos:
