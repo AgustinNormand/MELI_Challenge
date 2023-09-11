@@ -1,9 +1,11 @@
+import os
 from datetime import datetime
 import pandas as pd
 import logging
-from dotenv import dotenv_values
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
+from dotenv import load_dotenv
+import os
 class DowntimeFileAnalyzer:
     def __init__(self):
         logging.basicConfig(filename="app.log",
@@ -13,9 +15,10 @@ class DowntimeFileAnalyzer:
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
 
-        self.logger.info("DowntimeFileAnalyzer started")
+        if os.path.exists(".env"):
+            load_dotenv(verbose=True)
 
-        self.config = dotenv_values(".env")
+        self.logger.info("DowntimeFileAnalyzer started")
 
         self.timestamp_lines = []
         self.error_lines = []
@@ -26,6 +29,9 @@ class DowntimeFileAnalyzer:
 
         self.min_date = None
         self.max_date = None
+
+    def get_config(self, key):
+        return os.getenv(key)
 
     # Función personalizada para analizar fechas y horas de diferentes formatos
     def parse_date(self, date_str):
@@ -98,7 +104,7 @@ class DowntimeFileAnalyzer:
 
     def analyze_file(self):
         # Abre el archivo en modo lectura
-        with open(self.config["DATA_FILENAME"], 'r') as f:
+        with open(self.get_config("DATA_FILENAME"), 'r') as f:
             # Itera a través de cada línea en el archivo
             for line in f:
                 try:
@@ -113,13 +119,13 @@ class DowntimeFileAnalyzer:
         self.dataframe = data.drop_duplicates()
 
     def export_to_influx(self):
-        token = self.config["DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"]
-        bucket = self.config["INFLUXDB_BUCKET"]
-        org = self.config["INFLUXDB_ORG"]
+        token = self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
+        bucket = self.get_config("INFLUXDB_BUCKET")
+        org = self.get_config("INFLUXDB_ORG")
 
         self.dataframe = self.dataframe.set_index('start_date')
 
-        client = InfluxDBClient(url=self.config["INFLUXDB_URL"], token=token, org=org, debug=True)
+        client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"), token=token, org=org, debug=True)
         write_client = client.write_api(write_options=SYNCHRONOUS)
 
         write_client.write(bucket, record=self.dataframe, data_frame_measurement_name='downtimes',
