@@ -98,20 +98,58 @@ Utilizando estos, y el selector de fechas de Grafana se pueden responder las pre
 
 Cabe destacar que Grafana indica un valor preestablecido para cuando no hay datos disponibles, que hace referencia a 100% de uptime. 
 
-Tal como en las preguntas ...
+Tal como en las preguntas 2, 4, y 5.
+
+### 1. ¿Cuál fue el uptime de la aplicación app1 en 2019?
+
+Estableciendo el intervalo de tiempo:
+
+![timerange_question_1](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/28e27d5f-70d3-4724-9c26-5e3cd15d8ab3)
+
+Obtenemos:
+
+![answer_question_1](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/2959c9d6-c8f2-4569-b40d-15a49357030f)
+
+### 2. ¿Cuál fue el uptime total de las aplicaciones app2 y app5 en Q1 2021?
+
+Estableciendo el intervalo de tiempo:
+
+![timerange_question_2_4](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/cbfce106-e4a7-436d-b0a3-38947508c14e)
+
+Obtenemos:
+
+![answer_question_2](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/ee2ca7f2-3ef1-4f52-9ebe-222ad5222116)
 
 
-### ¿Cuál fue el uptime de la aplicación app1 en 2019?
+### 3. ¿Cuál fue el uptime de la aplicación app4 durante Febrero de 2023?
 
-### ¿Cuál fue el uptime total de las aplicaciones app2 y app5 en Q1 2021?
+Estableciendo el intervalo de tiempo:
 
-### ¿Cuál fue el uptime de la aplicación app4 durante Febrero de 2023?
+![timerange_question_3](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/c126c2b0-3f6f-44b6-a586-6fa604f7c898)
 
-### ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2021?
+Obtenemos:
 
-### ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2020?
+![answer_question_3](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/adbd4344-caa7-4135-a95c-79600e4cf06c)
 
+### 4. ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2021?
 
+Estableciendo el intervalo de tiempo:
+
+![timerange_question_2_4](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/dd4d7fcc-2c6c-43a7-841f-8675151c3175)
+
+Obtenemos:
+
+![answer_question_4](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/b2333338-7fe8-4fcb-8ae9-a175a9adcfba)
+
+### 5. ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2020?
+
+Estableciendo el intervalo de tiempo:
+
+![timerange_question_5](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/f93b4d19-b9c9-4907-9ba6-983b397d925d)
+
+Obtenemos:
+
+![answer_question_5](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/3645e56d-89e8-404d-965e-edf432f1d5de)
 
 ## Pendientes / Trabajos Futuros
 
