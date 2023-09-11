@@ -1,10 +1,22 @@
 # Desafío 2
 
-## Descripción
+## Detalle de la solución planteada
+
+Para resovler el ejercicio en primer lugar analicé el archivo enviado para entender su estructura y los datos que contenía.
+
+Luego preprocesé los datos, para poder cargarlos en una base de datos.
+
+La herramienta elegida para el almacenamiento de los datos fue InfluxDB, ya que es una base de datos orientada a series de tiempo, y los datos que se estaban analizando eran de ese tipo.
+
+Por otro lado, para la visualización de los datos, se utilizó Grafana
+
+## Análisis exploratorio
+
+En esta seccion de describe lo aprendido sobre el archivo 'Datos_uptime_challenge.tsv'.
 
 ### Formatos de lineas
 
-El archivo 'Datos_uptime_challenge.tsv' contiene 2 tipos de lienas:
+Dicho archivo contiene 2 tipos de lienas:
 
 #### Lineas con datos de downtime
 
@@ -54,16 +66,80 @@ La app2 es la única que tiene una linea duplicada:
 
 2022-02-21T15:50	2022-02-21 15:51	app2
 
-## Build
-### Docker
-```bash
-docker-compose up -d
-```
+### Fecha de los datos
 
-Instalé la extensión de csv
+Los timestamps de las lineas del archivo van desde:
 
-Agregé las lineas al grafana.ini
-[plugin.marcusolsson-csv-datasource]
-allow_local_mode = true
+2019-09-07 15:50:00
 
-Hice las transformaciones necesarias dentro de grafana para los tipos de datos
+Hasta:
+
+2023-08-17 18:31:01.295181
+
+## Preprocesado de los datos
+
+En esta sección, se detallan los pasos seguidos para lograr el preprocesado de los datos.
+
+* Se llevaron los timestamps a un formato común.
+* Se descartó la linea de error "app4-error".
+* Se invirtó el orden de los timestamps de la linea con el timestamp de inicio de downtime posterior al de fin de downtime.
+* Se desagregó la linea que abarca un intervalo de tiempo grande, en lines de un día de duración.
+* Se eliminó la linea duplicada.
+
+## Visualización de los datos
+
+Utilizando Grafana, se creó un dashboard separado por secciones:
+* Uptime Generales
+* Uptime Por Aplicación
+* Uptime vinculando Aplicaciones
+* Downtimes Generales
+
+Utilizando estos, y el selector de fechas de Grafana se pueden responder las preguntas planteadas en el enunciado.
+
+Cabe destacar que Grafana indica un valor preestablecido para cuando no hay datos disponibles, que hace referencia a 100% de uptime. 
+
+Tal como en las preguntas ...
+
+
+### ¿Cuál fue el uptime de la aplicación app1 en 2019?
+
+### ¿Cuál fue el uptime total de las aplicaciones app2 y app5 en Q1 2021?
+
+### ¿Cuál fue el uptime de la aplicación app4 durante Febrero de 2023?
+
+### ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2021?
+
+### ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2020?
+
+
+
+## Pendientes / Trabajos Futuros
+
+* Usando los timestamps de los registros anteriores a la linea de error "app4-error", estimar la fecha de dicha linea, agregarlo a un bucket de InfluxDB y graficarlo en Grafana.
+* Documentar el build del proyecto.
+
+[//]: # (## Build)
+
+[//]: # (### Docker)
+
+[//]: # (```bash)
+
+[//]: # (docker-compose up -d)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Instalé la extensión de csv)
+
+[//]: # ()
+[//]: # (Agregé las lineas al grafana.ini)
+
+[//]: # ([plugin.marcusolsson-csv-datasource])
+
+[//]: # (allow_local_mode = true)
+
+[//]: # ()
+[//]: # (Hice las transformaciones necesarias dentro de grafana para los tipos de datos)
+
+[//]: # ()
+[//]: # (https://docs.influxdata.com/influxdb/v2.7/tools/grafana/?t=InfluxQL)
