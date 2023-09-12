@@ -25,7 +25,15 @@ Pasos para realizar el deploy de la solución:
 
 * docker-compose up -d
 
-* Agregar la fuente de datos InfluxDB
+* Agregar la fuente de datos InfluxDB (https://docs.influxdata.com/influxdb/v2.7/tools/grafana/?t=InfluxQL)
+* * URL: http://influxdb:8086
+* * Add "Custom HTTP Headers"
+* * * X-Custom-Header = Authorization
+* * * Header Value: Token DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+* * Database: INFLUXDB_BUCKET
+* * HTTP Method: GET
+
+* Nota: Reemplazar los valores (DOCKER_INFLUXDB_INIT_ADMIN_TOKEN, ) con los definidos en el archivo .env
 
 * Ingresar a Grafana, importar el dashboard usando el archivo .json del Desafío_2.
 

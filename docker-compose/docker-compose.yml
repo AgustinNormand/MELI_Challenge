@@ -39,7 +39,7 @@ services:
     user: "0"
 
   app_desafio_2:
-    image: agustinnormand/app_desafio_2:0.9
+    image: agustinnormand/app_desafio_2:0.10
     container_name: app_desafio_2
     environment:
       - INFLUXDB_ORG=${INFLUXDB_ORG}

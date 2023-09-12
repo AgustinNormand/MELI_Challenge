@@ -185,10 +185,11 @@ Obtenemos:
 
 ![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/1ff63a70-3abf-46ef-9c92-15af4d87ef07)
 
-## Pendientes / Trabajos Futuros
+## Pendientes
 
 * Usando los timestamps de los registros anteriores a la linea de error "app4-error", estimar la fecha de dicha linea, agregarlo a un bucket de InfluxDB y graficarlo en Grafana.
-* Documentar el build del proyecto.
+* Documentar más detallado el build del desafío 2.
+* Automatizar la importación de dashboard y la configuración de InfluxDB.
 
 [//]: # (## Build)
 
@@ -197,5 +198,3 @@ Obtenemos:
 [//]: # (docker build -t agustinnormand/app_desafio_2:0.3 .)
 
 [//]: # (docker push agustinnormand/app_desafio_2:0.9)
-
-[//]: # (https://docs.influxdata.com/influxdb/v2.7/tools/grafana/?t=InfluxQL)
