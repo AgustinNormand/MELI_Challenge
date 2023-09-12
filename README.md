@@ -12,3 +12,22 @@ Se utilizó docker-compose para el manejo de los contenedores.
 IP: 34.125.19.164
 
 
+Pasos para realizar el deploy de la solución:
+
+* Instalar Docker (curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh)
+
+* Realizar los pasos post instalación (sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker)
+
+* Instalar Docker-Compose (sudo apt install docker-compose -y)
+
+* git clone https://github.com/AgustinNormand/MELI_Challenge.git
+
+* Moverse al directorio "docker-compose" (cd docker-compose)
+
+* mv .env.example .env
+
+* Completar el archivo .env
+
+* docker-compose up -d
+
+
