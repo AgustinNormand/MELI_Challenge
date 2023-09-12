@@ -32,8 +32,9 @@ services:
     volumes:
       - /grafana/var/:/var/lib/grafana
       - ./grafana/etc/:/etc/grafana
-    depends-on:
+    depends_on:
       - influxdb
+    user: "0"
 
 
   app_desafio_2:
@@ -47,5 +48,5 @@ services:
       - DATA_FILENAME=Datos_uptime_challenge.tsv
     networks:
       - default
-    depends-on:
+    depends_on:
       - influxdb
