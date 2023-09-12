@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+
   app_desafio_1:
     image: agustinnormand/app_desafio_1:0.7
     container_name: app_desafio_1
@@ -12,6 +13,16 @@ services:
       - INFLUXDB_BUCKET_PRODUCERS=${INFLUXDB_BUCKET_PRODUCERS}
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
       - INFLUXDB_URL=http://influxdb:8086
+    networks:
+      - default
+
+  consumer_desafio_1:
+    image: agustinnormand/consumer_desafio_1:0.2
+    container_name: consumer_desafio_1
+    environment:
+      - APIKEY=${FAST_API_TOKEN}
+      - API_URL=http://app_desafio_1:8000/secapp/update
+      - APP_NAME=secapp50
     networks:
       - default
 
