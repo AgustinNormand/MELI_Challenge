@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   app_desafio_1:
-    image: agustinnormand/app_desafio_1:0.4
+    image: agustinnormand/app_desafio_1:0.7
     container_name: app_desafio_1
     ports:
       - "8000:8000"
@@ -9,6 +9,7 @@ services:
       - APIKEY=${FAST_API_TOKEN}
       - INFLUXDB_ORG=${INFLUXDB_ORG}
       - INFLUXDB_BUCKET_CONSUMERS=${INFLUXDB_BUCKET_CONSUMERS}
+      - INFLUXDB_BUCKET_PRODUCERS=${INFLUXDB_BUCKET_PRODUCERS}
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
       - INFLUXDB_URL=http://influxdb:8086
     networks:

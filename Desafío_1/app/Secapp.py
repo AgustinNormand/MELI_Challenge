@@ -117,10 +117,10 @@ class Secapp():
 
         processed_id = next(self.processed_id_counter)
 
-        update_date = state.dict()["Change_at"].strftime("%Y-%m-%dT%H:%M:%SZ")
+        update_date = state.dict()["Change_at"]
         update_value = state.dict()["current_status"]
 
-        self.register_producer_request(App_name, int(time.time()), update_date.timestamp(), processed_id, update_value)
+        self.register_producer_request(App_name, update_date.timestamp(), processed_id, update_value)
 
         if self.last_criticity_update_date == None or update_date > self.last_criticity_update_date:
             self.last_criticity_update_date = update_date
