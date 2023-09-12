@@ -8,12 +8,12 @@ Acceder a la documentación en la dirección: http://34.125.19.164:8000/docs
 
 Utilizar el token enviado por correo.
 
+Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3000/d/d789e151-3b2f-41da-a6a4-d63afccd77fa/api-dashboard?orgId=1) de Grafana creado para la API. Para conectarse utilizar las credenciales enviadas por correo.
+
 
 ## Desafío 2
 
-Conectarse a Grafana en la dirección: http://34.125.19.164:3000/
-
-Ingresar con las credenciales enviadas por correo.
+Conectarse al [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana utilizando las credenciales enviadas por correo.
 
 ## Build
 
