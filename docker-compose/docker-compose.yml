@@ -34,3 +34,16 @@ services:
       - $DOCKERDIR/influxdb/config:/etc/influxdb2
       - $DOCKERDIR/influxdb/db:/var/lib/influxdb2
 
+  app_desafio_2:
+    image: agustinnormand/app_desafio_2:0.9
+    container_name: app_desafio_2
+    environment:
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
+      - INFLUXDB_URL=http://influxdb:8086
+      - DATA_FILENAME=Datos_uptime_challenge.tsv
+    networks:
+      - default
+    restart: never
+

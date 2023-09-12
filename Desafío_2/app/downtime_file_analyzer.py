@@ -6,14 +6,16 @@ from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
 from dotenv import load_dotenv
 import os
+import time
+
 class DowntimeFileAnalyzer:
     def __init__(self):
-        logging.basicConfig(filename="app.log",
-                            format='%(asctime)s %(name)s - %(levelname)s - %(message)s',
-                            filemode='w')
-
-        self.logger = logging.getLogger()
-        self.logger.setLevel(logging.INFO)
+        logging.basicConfig(level=logging.INFO)
+        self.logger = logging.getLogger('DowntimeFileAnalyzerLogger')
+        stream_handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        stream_handler.setFormatter(formatter)
+        self.logger.addHandler(stream_handler)
 
         if os.path.exists(".env"):
             load_dotenv(verbose=True)
@@ -125,7 +127,14 @@ class DowntimeFileAnalyzer:
 
         self.dataframe = self.dataframe.set_index('start_date')
 
-        client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"), token=token, org=org, debug=True)
+        client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"), token=token, org=org, debug=False)
+
+        health = client.health()
+        while health.status != "pass":
+            self.logger.warning("InfluxDB is not ready yet. Waiting 10 seconds...")
+            time.sleep(10)
+            health = client.health()
+
         write_client = client.write_api(write_options=SYNCHRONOUS)
 
         write_client.write(bucket, record=self.dataframe, data_frame_measurement_name='downtimes',

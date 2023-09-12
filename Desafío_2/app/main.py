@@ -1,4 +1,4 @@
-from app.downtime_file_analyzer import DowntimeFileAnalyzer
+from downtime_file_analyzer import DowntimeFileAnalyzer
 
 if __name__ == "__main__":
     dfa = DowntimeFileAnalyzer()

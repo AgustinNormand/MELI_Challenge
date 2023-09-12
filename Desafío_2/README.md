@@ -194,24 +194,6 @@ Obtenemos:
 
 [//]: # (### Docker)
 
-[//]: # (```bash)
+[//]: # (docker build -t agustinnormand/app_desafio_2:0.3 .)
 
-[//]: # (docker-compose up -d)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (Instalé la extensión de csv)
-
-[//]: # ()
-[//]: # (Agregé las lineas al grafana.ini)
-
-[//]: # ([plugin.marcusolsson-csv-datasource])
-
-[//]: # (allow_local_mode = true)
-
-[//]: # ()
-[//]: # (Hice las transformaciones necesarias dentro de grafana para los tipos de datos)
-
-[//]: # ()
 [//]: # (https://docs.influxdata.com/influxdb/v2.7/tools/grafana/?t=InfluxQL)
