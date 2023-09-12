@@ -44,5 +44,3 @@ services:
       - DATA_FILENAME=Datos_uptime_challenge.tsv
     networks:
       - default
-    restart: never
-
