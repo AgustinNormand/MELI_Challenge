@@ -16,6 +16,25 @@ Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3
 
 Es posible coenctarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana, para visualizar los resultados.
 
+## Snapshots
+
+### Desafío 1
+
+#### Documentación
+![Screenshot from 2023-09-12 19-53-08](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/8903399a-d032-480a-915b-e9575fb31e01)
+
+#### Dashboard
+![Screenshot from 2023-09-12 19-51-21](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/b77bcd1b-5518-417a-acc5-162998b1cbbd)
+
+### Desafío 2
+
+#### Dashboard
+![Screenshot from 2023-09-12 19-51-34](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/87477786-7613-43ec-b929-8b06b1aec309)
+
+
+
+
+
 ## Deploy en Cloud
 
 Pasos para realizar el deploy de la solución:
