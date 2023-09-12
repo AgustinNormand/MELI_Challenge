@@ -9,7 +9,7 @@ services:
     volumes:
       - /grafana/var/:/var/lib/grafana
       - ./grafana/etc/:/etc/grafana
-    user: "${UID}:${GID}"
+    user: "${DOCKER_UID}:${DOCKER_GID}"
 
   influxdb:
     image: influxdb:latest

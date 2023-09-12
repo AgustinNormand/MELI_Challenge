@@ -28,6 +28,10 @@ Pasos para realizar el deploy de la solución:
 
 * Completar el archivo .env
 
+* Exportar la variable de entorno correspondiente al Group ID. (export DOCKER_GID=$(id -g))
+
+* Exportar la variable de entorno correspondiente al User ID. (export DOCKER_UID=$(id -u))
+
 * docker-compose up -d
 
 
