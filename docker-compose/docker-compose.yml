@@ -36,6 +36,16 @@ services:
     networks:
       - default
 
+  producer_99_desafio_1:
+    image: agustinnormand/producer_desafio_1:0.1
+    container_name: producer_99_desafio_1
+    environment:
+      - APIKEY=${FAST_API_TOKEN}
+      - API_URL=http://app_desafio_1:8000/secapp/update
+      - APPNAME=secapp99
+    networks:
+      - default
+
   influxdb:
     image: influxdb:latest
     container_name: influxdb
