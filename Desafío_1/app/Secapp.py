@@ -2,15 +2,18 @@ from fastapi import FastAPI, HTTPException, Header, APIRouter
 from pydantic import BaseModel
 from datetime import datetime
 from itertools import count
+import os
 
 class StateChange(BaseModel):
     current_status: int
     Change_at: datetime
 
+
 class Secapp():
     def __init__(self):
         self.processed_id_counter = count(0)
         self.clients_apps_last_update_timestamps = {}
+
         self.last_criticity_update_value = None
         self.last_criticity_update_timestamp = None
         self.last_criticity_update_processed_id = None
@@ -21,7 +24,17 @@ class Secapp():
         self.router.add_api_route("/secapp/update", self.get_last_state, methods=["GET"])
         self.router.add_api_route("/secapp/update", self.update_state, methods=["POST"])
 
-    async def get_last_state(self, App_name: str = Header(None)):
+    async def get_last_state(self,
+                             App_name: str = Header(None),
+                             token: str = Header(None)):
+
+        if token != os.getenv("APIKEY"):
+            raise HTTPException(
+                status_code=401,
+                detail="wrong api key",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+
         if not App_name:
             raise HTTPException(status_code=400, detail="Falta el encabezado App-name")
 
@@ -44,9 +57,23 @@ class Secapp():
                     "status_change_id": self.last_criticity_update_processed_id,
                     "Change_at": self.last_criticity_update_timestamp}
 
-    async def update_state(self, state: StateChange, App_name: str = Header(None)):
+    async def update_state(self,
+                           state: StateChange,
+                           App_name: str = Header(None),
+                            token: str = Header(None)):
+
+        if token != os.getenv("APIKEY"):
+            raise HTTPException(
+                status_code=401,
+                detail="wrong api key",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+
         if not App_name:
-            raise HTTPException(status_code=400, detail="Falta el encabezado App-name")
+            raise HTTPException(
+                status_code=400,
+                detail="Falta el encabezado App-name"
+            )
 
         processed_id = next(self.processed_id_counter)
 

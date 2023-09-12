@@ -1,5 +1,11 @@
 version: "3.8"
 services:
+  app_desafio_1:
+    image: agustinnormand/app_desafio_1:0.2
+    container_name: app_desafio_1
+    networks:
+      - default
+
   influxdb:
     image: influxdb:latest
     container_name: influxdb
@@ -24,7 +30,7 @@ services:
       - ./influxdb/db:/var/lib/influxdb2
 
   grafana:
-    image: grafana/grafana-enterprise
+    image: grafana/grafana-enterprise:latest
     container_name: grafana
     restart: unless-stopped
     ports:

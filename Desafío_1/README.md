@@ -17,3 +17,6 @@ docker run -p 8000:8000 app
 
 # Documentación
 http://127.0.0.1:8000/docs
+
+docker build -t agustinnormand/app_desafio_1:0.1 .
+docker push agustinnormand/app_desafio_1:0.1
