@@ -5,6 +5,8 @@ services:
     container_name: app_desafio_1
     ports:
       - "8000:8000"
+    environment:
+      - APIKEY=${FAST_API_TOKEN}
     networks:
       - default
 

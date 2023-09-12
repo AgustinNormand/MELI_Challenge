@@ -2,6 +2,12 @@
 
 ## Desafío 1
 
+Utilizar el endpoint de la API: 34.125.19.164:8000
+
+Acceder a la documentación en la dirección: http://34.125.19.164:8000/docs
+
+Utilizar el token enviado por correo.
+
 
 ## Desafío 2
 
