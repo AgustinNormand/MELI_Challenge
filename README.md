@@ -22,7 +22,7 @@ Pasos para realizar el deploy de la solución:
 
 * git clone https://github.com/AgustinNormand/MELI_Challenge.git
 
-* Moverse al directorio "docker-compose" (cd docker-compose)
+* Moverse al directorio "docker-compose" (cd MELI_Challenge/docker-compose)
 
 * mv .env.example .env
 
