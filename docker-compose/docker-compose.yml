@@ -9,6 +9,7 @@ services:
     volumes:
       - $DOCKERDIR/grafana/var/:/var/lib/grafana
       - $DOCKERDIR/grafana/etc/:/etc/grafana
+    user: "${UID}:${GID}"
 
   influxdb:
     image: influxdb:latest
@@ -32,6 +33,7 @@ services:
     volumes:
       - $DOCKERDIR/influxdb/config:/etc/influxdb2
       - $DOCKERDIR/influxdb/db:/var/lib/influxdb2
+    user: "${UID}:${GID}"
 
   app_desafio_2:
     image: agustinnormand/app_desafio_2:0.9
@@ -44,3 +46,4 @@ services:
       - DATA_FILENAME=Datos_uptime_challenge.tsv
     networks:
       - default
+    user: "${UID}:${GID}"
