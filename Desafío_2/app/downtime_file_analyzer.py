@@ -7,6 +7,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 from dotenv import load_dotenv
 import os
 import time
+import sys
 
 class DowntimeFileAnalyzer:
     def __init__(self):
@@ -22,6 +23,15 @@ class DowntimeFileAnalyzer:
 
         self.logger.info("DowntimeFileAnalyzer started")
 
+        self.client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"), token=self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"), org=self.get_config("INFLUXDB_ORG"), debug=False)
+
+        self.wait_influxdb()
+
+        if self.bucket_loaded():
+            self.logger.info("Bucket already loaded")
+            sys.exit(0)
+        
+
         self.timestamp_lines = []
         self.error_lines = []
         self.date_formats_count = {}
@@ -31,6 +41,23 @@ class DowntimeFileAnalyzer:
 
         self.min_date = None
         self.max_date = None
+    
+    def wait_influxdb(self):
+        health = self.client.health()
+        while health.status != "pass":
+            self.logger.warning("InfluxDB is not ready yet. Waiting 10 seconds...")
+            time.sleep(10)
+            health = self.client.health()
+
+    def bucket_loaded(self):
+        query = f'from(bucket: "{self.get_config("INFLUXDB_BUCKET")}") |> range(start: 0) |> count()'
+
+        result = self.client.query_api().query(query, org=self.get_config("INFLUXDB_ORG"))
+
+        if len(result) > 0 and len(result[0].records) > 0:
+            return True
+        else:
+            return False
 
     def get_config(self, key):
         return os.getenv(key)
@@ -121,23 +148,11 @@ class DowntimeFileAnalyzer:
         self.dataframe = data.drop_duplicates()
 
     def export_to_influx(self):
-        token = self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
-        bucket = self.get_config("INFLUXDB_BUCKET")
-        org = self.get_config("INFLUXDB_ORG")
-
         self.dataframe = self.dataframe.set_index('start_date')
 
-        client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"), token=token, org=org, debug=False)
+        write_client = self.client.write_api(write_options=SYNCHRONOUS)
 
-        health = client.health()
-        while health.status != "pass":
-            self.logger.warning("InfluxDB is not ready yet. Waiting 10 seconds...")
-            time.sleep(10)
-            health = client.health()
-
-        write_client = client.write_api(write_options=SYNCHRONOUS)
-
-        write_client.write(bucket, record=self.dataframe, data_frame_measurement_name='downtimes',
+        write_client.write(self.get_config("INFLUXDB_BUCKET"), record=self.dataframe, data_frame_measurement_name='downtimes',
                            data_frame_tag_columns=['app_name'])
 
     def export_results(self):
