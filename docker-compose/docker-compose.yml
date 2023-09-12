@@ -30,8 +30,10 @@ services:
     ports:
      - '3000:3000'
     volumes:
-      - /grafana/var/:/var/lib/grafana
-      - ./grafana/etc/:/etc/grafana
+      - ./grafana/etc/:/etc/grafana/
+      - ./grafana/lib/:/var/lib/grafana
+      - ./grafana/home/:/usr/share/grafana
+      - ./grafana/logs/:/var/log/grafana
     depends_on:
       - influxdb
     user: "0"
