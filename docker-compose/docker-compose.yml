@@ -1,16 +1,5 @@
 version: "3.8"
 services:
-  grafana:
-    image: grafana/grafana-enterprise
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-     - '3000:3000'
-    volumes:
-      - /grafana/var/:/var/lib/grafana
-      - ./grafana/etc/:/etc/grafana
-    user: "${DOCKER_UID}:${DOCKER_GID}"
-
   influxdb:
     image: influxdb:latest
     container_name: influxdb
@@ -33,7 +22,19 @@ services:
     volumes:
       - ./influxdb/config:/etc/influxdb2
       - ./influxdb/db:/var/lib/influxdb2
-    user: "${UID}:${GID}"
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+     - '3000:3000'
+    volumes:
+      - /grafana/var/:/var/lib/grafana
+      - ./grafana/etc/:/etc/grafana
+    depends-on:
+      - influxdb
+
 
   app_desafio_2:
     image: agustinnormand/app_desafio_2:0.9
@@ -46,4 +47,5 @@ services:
       - DATA_FILENAME=Datos_uptime_challenge.tsv
     networks:
       - default
-    user: "${UID}:${GID}"
+    depends-on:
+      - influxdb
