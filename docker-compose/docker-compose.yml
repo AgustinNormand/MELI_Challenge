@@ -3,6 +3,8 @@ services:
   app_desafio_1:
     image: agustinnormand/app_desafio_1:0.2
     container_name: app_desafio_1
+    ports:
+      - "8000:8000"
     networks:
       - default
 
