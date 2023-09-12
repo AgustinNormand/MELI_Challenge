@@ -1,7 +1,15 @@
 # MELI_Challenge
 
-IP: 34.125.19.164
+## Desafío 1
 
+
+## Desafío 2
+
+Conectarse a Grafana en la dirección: http://34.125.19.164:3000/
+
+Ingresar con las credenciales enviadas por correo.
+
+## Build
 
 Pasos para realizar el deploy de la solución:
 
