@@ -1,19 +1,18 @@
 # MELI_Challenge
 
+Utilizando el token enviado por correo, o el usuario y contraseña, se pueden probar las soluciones planteadas como respuesta al desafío. Se detallan las URL o endpoint en las siguiente secciones.
+
 ## Desafío 1
 
-Utilizar el endpoint de la API: 34.125.19.164:8000
+La API se encuentra disponible en el endpoint: 34.125.19.164:8000.
 
 Acceder a la documentación en la dirección: http://34.125.19.164:8000/docs
 
-Utilizar el token enviado por correo.
-
-Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3000/d/d789e151-3b2f-41da-a6a4-d63afccd77fa/api-dashboard?orgId=1) de Grafana creado para la API. Para conectarse utilizar las credenciales enviadas por correo.
-
+Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3000/d/d789e151-3b2f-41da-a6a4-d63afccd77fa/api-dashboard?orgId=1) de Grafana creado para la API.
 
 ## Desafío 2
 
-Conectarse al [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana utilizando las credenciales enviadas por correo.
+Es posible coenctarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana, para visualizar los resultados.
 
 ## Build
 
