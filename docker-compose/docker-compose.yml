@@ -22,7 +22,7 @@ services:
     environment:
       - APIKEY=${FAST_API_TOKEN}
       - API_URL=http://app_desafio_1:8000/secapp/update
-      - APP_NAME=secapp50
+      - APPNAME=secapp50
     networks:
       - default
 
@@ -32,7 +32,7 @@ services:
     environment:
       - APIKEY=${FAST_API_TOKEN}
       - API_URL=http://app_desafio_1:8000/secapp/update
-      - APP_NAME=secapp100
+      - APPNAME=secapp100
     networks:
       - default
 
