@@ -196,4 +196,6 @@ Obtenemos:
 
 [//]: # (docker build -t agustinnormand/app_desafio_2:0.3 .)
 
+[//]: # (docker push agustinnormand/app_desafio_2:0.9)
+
 [//]: # (https://docs.influxdata.com/influxdb/v2.7/tools/grafana/?t=InfluxQL)
