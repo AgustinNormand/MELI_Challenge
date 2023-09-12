@@ -33,6 +33,9 @@ services:
       - ./grafana/data/:/var/lib/grafana
     depends_on:
       - influxdb
+    environment:
+      - "GF_SECURITY_ADMIN_USER=${GRAFANA_USER}"
+      - "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_USER_PASSWORD}"
     user: "0"
 
   app_desafio_2:
