@@ -16,13 +16,23 @@ services:
     networks:
       - default
 
-  consumer_desafio_1:
-    image: agustinnormand/consumer_desafio_1:0.2
-    container_name: consumer_desafio_1
+  consumer_50_desafio_1:
+    image: agustinnormand/consumer_desafio_1:0.5
+    container_name: consumer_50_desafio_1
     environment:
       - APIKEY=${FAST_API_TOKEN}
       - API_URL=http://app_desafio_1:8000/secapp/update
       - APP_NAME=secapp50
+    networks:
+      - default
+
+  consumer_100_desafio_1:
+    image: agustinnormand/consumer_desafio_1:0.5
+    container_name: consumer_100_desafio_1
+    environment:
+      - APIKEY=${FAST_API_TOKEN}
+      - API_URL=http://app_desafio_1:8000/secapp/update
+      - APP_NAME=secapp100
     networks:
       - default
 
