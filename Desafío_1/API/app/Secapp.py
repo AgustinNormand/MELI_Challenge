@@ -103,19 +103,20 @@ class Secapp():
             return {}
 
         if App_name in self.clients_apps_last_update_timestamps.keys():
-            self.logger.info(f"App name in keys, checking {self.clients_apps_last_update_timestamps[App_name]} {self.last_criticity_update_date}")
             if self.clients_apps_last_update_timestamps[App_name] < self.last_criticity_update_date:
+                self.clients_apps_last_update_timestamps[App_name] = self.last_criticity_update_date
                 return {"current_status": self.last_criticity_update_value,
                         "status_change_id": self.last_criticity_update_processed_id,
                         "Change_at": self.last_criticity_update_date.strftime('%Y-%m-%dT%H:%M:%SZ')}
             else:
+                self.clients_apps_last_update_timestamps[App_name] = self.last_criticity_update_date
                 return {}
         else:
             self.clients_apps_last_update_timestamps[App_name] = self.last_criticity_update_date
-
             return {"current_status": self.last_criticity_update_value,
                     "status_change_id": self.last_criticity_update_processed_id,
                     "Change_at": self.last_criticity_update_date.strftime('%Y-%m-%dT%H:%M:%SZ')}
+
 
     async def update_state(self,
                            state: StateChange,
