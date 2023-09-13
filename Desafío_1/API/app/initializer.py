@@ -1,18 +1,14 @@
 from itertools import count
 import os
-import datetime
-import pytz
+
+
 class Initializer():
-    def __init__(self, influxdb_client, logger, config=None):
-        self.config = config
+    def __init__(self, influxdb_client, logger):
         self.client = influxdb_client
         self.logger = logger
 
     def get_config(self, key):
-        if self.config is None:
-            return os.getenv(key)
-        else:
-            return self.config[key]
+        return os.getenv(key)
 
     def process_id(self):
         try:
@@ -83,4 +79,3 @@ class Initializer():
         except Exception as e:
             self.logger.error(e)
             return {}
-

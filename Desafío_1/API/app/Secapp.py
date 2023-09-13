@@ -7,21 +7,25 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 import time
 from app.initializer import Initializer
 import logging
+from dotenv import load_dotenv
+import os
+
 
 class StateChange(BaseModel):
     current_status: int
     Change_at: datetime
 
 class Secapp():
-    def __init__(self, config=None):
+    def __init__(self):
+        if os.path.exists(".env"):
+            load_dotenv(verbose=True)
+
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger()
 
-        self.config = config
-
         self.client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"),
-                                     token=self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"),
-                                     org=self.get_config("INFLUXDB_ORG"), debug=False)
+                                      token=self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"),
+                                      org=self.get_config("INFLUXDB_ORG"), debug=False)
 
         self.write_api = self.client.write_api(write_options=SYNCHRONOUS)
 
@@ -32,13 +36,10 @@ class Secapp():
         self.router.add_api_route("/secapp/update", self.update_state, methods=["POST"])
 
     def get_config(self, key):
-        if self.config is None:
-            return os.getenv(key)
-        else:
-            return self.config[key]
+        return os.getenv(key)
 
     def initialize_values(self):
-        initializer = Initializer(self.client, self.logger, self.config)
+        initializer = Initializer(self.client, self.logger)
 
         self.processed_id_counter = initializer.process_id()
 
@@ -106,7 +107,7 @@ class Secapp():
             if self.clients_apps_last_update_timestamps[App_name] < self.last_criticity_update_date:
                 return {"current_status": self.last_criticity_update_value,
                         "status_change_id": self.last_criticity_update_processed_id,
-                        "Change_at": self.last_criticity_update_date}
+                        "Change_at": self.last_criticity_update_date.strftime('%Y-%m-%dT%H:%M:%SZ')}
             else:
                 return {}
         else:
@@ -114,7 +115,7 @@ class Secapp():
 
             return {"current_status": self.last_criticity_update_value,
                     "status_change_id": self.last_criticity_update_processed_id,
-                    "Change_at": self.last_criticity_update_date}
+                    "Change_at": self.last_criticity_update_date.strftime('%Y-%m-%dT%H:%M:%SZ')}
 
     async def update_state(self,
                            state: StateChange,
