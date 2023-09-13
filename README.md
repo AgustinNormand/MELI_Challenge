@@ -32,8 +32,9 @@ Es posible conectarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e
 ![Screenshot from 2023-09-12 19-51-34](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/87477786-7613-43ec-b929-8b06b1aec309)
 
 
+## Documentación
 
-
+En los archivos diferentes archivos README.md del repositorio se encuentra documentado de forma mas detallada cada una de las diferentes partes de las soluciones planteadas.
 
 ## Deploy en Cloud
 

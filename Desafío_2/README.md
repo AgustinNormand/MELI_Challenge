@@ -8,7 +8,7 @@ Luego preprocesé los datos, para poder cargarlos en una base de datos.
 
 La herramienta elegida para el almacenamiento de los datos fue InfluxDB, ya que es una base de datos orientada a series de tiempo, y los datos que se estaban analizando eran de ese tipo.
 
-Por otro lado, para la visualización de los datos, se utilizó Grafana
+Por otro lado, para la visualización de los datos, se utilizó Grafana. Ya que en la entrevista se dijo que estaban utilizando esta herramienta para tareas similares.
 
 ## Análisis exploratorio
 
@@ -185,16 +185,19 @@ Obtenemos:
 
 ![image](https://github.com/AgustinNormand/MELI_Challenge/assets/48933518/1ff63a70-3abf-46ef-9c92-15af4d87ef07)
 
+## Build
+
+### Docker
+
+Los pasos que seguí para armar las imagenes de docker fueron:
+
+* docker build -t agustinnormand/app_desafio_2:tag .
+
+* docker push agustinnormand/app_desafio_2:tag
+
 ## Pendientes
 
 * Usando los timestamps de los registros anteriores a la linea de error "app4-error", estimar la fecha de dicha linea, agregarlo a un bucket de InfluxDB y graficarlo en Grafana.
-* Documentar más detallado el build del desafío 2.
-* Automatizar la importación de dashboard y la configuración de InfluxDB.
+* Automatizar la importación del dashboard y la configuración de InfluxDB.
+* Mejorar la calidad del código (Modularización, Comentarios, Documentación)
 
-[//]: # (## Build)
-
-[//]: # (### Docker)
-
-[//]: # (docker build -t agustinnormand/app_desafio_2:0.3 .)
-
-[//]: # (docker push agustinnormand/app_desafio_2:0.9)
