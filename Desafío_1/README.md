@@ -2,7 +2,7 @@
 
 ## API - Secapp
 
-Si bien, en otra oportunidad para llevar a cabo una tarea similar usé Flask, en este caso para resolver el desafío opté por utilizar FastAPI, si bien previamente investigué Django Rest Framework como otra alternativa, la documentación automatizada de FastAPI, su desempeño competitivo con otros framework de diferentes lenguajes y la flexibilidad con el esquema de bases de datos que se desee utilizar, hicieron que me decida a aprender a utilizarlo para resolver el desafío.
+Si bien, en otra oportunidad para llevar a cabo una tarea similar usé Flask, en este caso para resolver el desafío opté por utilizar FastAPI, aunque previamente investigué Django Rest Framework como otra alternativa, la documentación automatizada de FastAPI, su desempeño competitivo con otros framework de diferentes lenguajes y la flexibilidad con el esquema de bases de datos que se desee utilizar, hicieron que me decida a aprender a utilizarlo para resolver el desafío.
 
 ### Documentación
 
@@ -41,8 +41,8 @@ Los activé para probar el funcionamiento, sacar un screenshot del dashboard pob
 ## Pendientes
 
 * Mejorar la calidad del código (Modularización, Comentarios, Documentación)
-* Mejorar la arquitectura
 * Agregar tests. (Caso cuando falta el header app_name, cuando falta el token)
+* Mejorar la arquitectura
 * * Load Balancer
 * * Queue de mensajes - RabbitMQ, Kafka, Celery
 * * Redundancia
