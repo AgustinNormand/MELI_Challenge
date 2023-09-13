@@ -14,7 +14,7 @@ Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3
 
 ### Desafío 2
 
-Es posible coenctarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana, para visualizar los resultados.
+Es posible conectarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana, para visualizar los resultados.
 
 ## Snapshots
 
