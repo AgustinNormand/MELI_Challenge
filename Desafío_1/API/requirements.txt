@@ -5,3 +5,4 @@ uvicorn>=0.23.2
 httpx>=0.24.1
 pymongo>=4.5.0
 influxdb-client>=1.37.0
+python-dotenv>=1.0.0

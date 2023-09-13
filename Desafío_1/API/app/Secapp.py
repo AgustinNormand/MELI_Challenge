@@ -1,41 +1,58 @@
 from fastapi import HTTPException, Header, APIRouter
 from pydantic import BaseModel
 from datetime import datetime
-from itertools import count
 import os
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
 import time
-
+from app.initializer import Initializer
+import logging
 
 class StateChange(BaseModel):
     current_status: int
     Change_at: datetime
 
-
 class Secapp():
-    def __init__(self):
-        self.processed_id_counter = count(1)
-        self.clients_apps_last_update_timestamps = {}  # DATABASE MISSING
+    def __init__(self, config=None):
+        logging.basicConfig(level=logging.INFO)
+        self.logger = logging.getLogger()
 
-        client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"),
-                                token=self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"),
-                                org=self.get_config("INFLUXDB_ORG"), debug=True)
+        self.config = config
 
-        self.write_api = client.write_api(write_options=SYNCHRONOUS)
+        self.client = InfluxDBClient(url=self.get_config("INFLUXDB_URL"),
+                                     token=self.get_config("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN"),
+                                     org=self.get_config("INFLUXDB_ORG"), debug=False)
 
-        self.last_criticity_update_value = None  # DATABASE MISSING
-        self.last_criticity_update_date = None  # DATABASE MISSING
-        self.last_criticity_update_processed_id = None  # DATABASE MISSING
+        self.write_api = self.client.write_api(write_options=SYNCHRONOUS)
 
-        # self.clients_apps_requests_timestamps = {} # ?
+        self.initialize_values()
 
         self.router = APIRouter()
         self.router.add_api_route("/secapp/update", self.get_last_state, methods=["GET"])
         self.router.add_api_route("/secapp/update", self.update_state, methods=["POST"])
 
     def get_config(self, key):
-        return os.getenv(key)
+        if self.config is None:
+            return os.getenv(key)
+        else:
+            return self.config[key]
+
+    def initialize_values(self):
+        initializer = Initializer(self.client, self.logger, self.config)
+
+        self.processed_id_counter = initializer.process_id()
+
+        self.logger.info(f"processed_id_counter: {self.processed_id_counter}")
+
+        self.last_criticity_update_value, self.last_criticity_update_date, self.last_criticity_update_processed_id = initializer.criticity()
+        logging.info(f"last_criticity_update_value: {self.last_criticity_update_value}")
+        logging.info(f"last_criticity_update_date: {self.last_criticity_update_date}")
+        logging.info(f"last_criticity_update_processed_id: {self.last_criticity_update_processed_id}")
+
+        self.clients_apps_last_update_timestamps = initializer.clients_apps_last_update_timestamps()
+        #logging.info(f"clients_apps_last_update_timestamps: {self.clients_apps_last_update_timestamps}")
+        for app_name in self.clients_apps_last_update_timestamps.keys():
+            self.logger.info(f"{app_name} - {self.clients_apps_last_update_timestamps[app_name]}")
 
     def register_consumer_request(self, App_name, timestamp):
         point = {
@@ -53,16 +70,17 @@ class Secapp():
     def register_producer_request(self, App_name, timestamp, process_id, criticity_value):
         point = {
             "measurement": "criticity_updates",
+            "time": int(timestamp),
             "tags": {
-                "app_name": App_name
+                "app_name": App_name,
+                "process_id_tag": process_id,
             },
             "fields": {
                 "process_id": process_id,
                 "criticity_value": criticity_value
             }
         }
-        self.write_api.write(bucket=self.get_config("INFLUXDB_BUCKET_PRODUCERS"), record=point, time=timestamp,
-                             write_precision='s')
+        self.write_api.write(bucket=self.get_config("INFLUXDB_BUCKET_PRODUCERS"), record=point, write_precision='s')
 
     async def get_last_state(self,
                              App_name: str = Header(None),
@@ -84,6 +102,7 @@ class Secapp():
             return {}
 
         if App_name in self.clients_apps_last_update_timestamps.keys():
+            self.logger.info(f"App name in keys, checking {self.clients_apps_last_update_timestamps[App_name]} {self.last_criticity_update_date}")
             if self.clients_apps_last_update_timestamps[App_name] < self.last_criticity_update_date:
                 return {"current_status": self.last_criticity_update_value,
                         "status_change_id": self.last_criticity_update_processed_id,

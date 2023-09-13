@@ -14,17 +14,17 @@ Además, es posible probar la API dentro de dicho sitio.
 
 Se codificaron tests unitarios para la API, verificando el correcto funcionamiento de la misma en diferentes escenarios.
 
-#### test_first_request
-[//]: (TODO)
-
 #### test_escenario_1
-[//]: (TODO)
+
+En este caso, se prueba que el escenario 1 de la consigna esté funcionando, es decir, que el usuario haga POST con los headers y body correspondientes, y que la respuesta de la API sea un status_code 200, y además se le retorne un process_id.
 
 #### test_escenario_2
-[//]: (TODO)
+
+Por otro lado, este test valida que el escenario 2 de la consigna esté funcionando, esto significa, que la API no solo permita cambios de criticidad con POST, sino también, obtenerlos mediante peticiones GET.
 
 #### test_escenario_3
-[//]: (TODO)
+
+El test_escenario_3, asegura que cuando una aplicación consumidora, ya se encuentra notificada del último estado, la API retorna un json vacío.
 
 ## Producer y Consumer
 
@@ -37,6 +37,7 @@ Se crearon dos pequeñas aplicaciones adicionales, con el propósito de simular 
 * Terminar de comprender status_change_id y su diferencia con el process_id
 * Mejorar la calidad del código (Modularización, Comentarios, Documentación)
 * Mejorar la arquitectura
+* Agregar tests. (Caso cuando falta el header app_name, cuando falta el token)
 * * Load Balancer
 * * Queue de mensajes - RabbitMQ, Kafka, Celery
 * * Redundancia
