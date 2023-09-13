@@ -30,11 +30,10 @@ El test_escenario_3, asegura que cuando una aplicación consumidora, ya se encue
 
 Se crearon dos pequeñas aplicaciones adicionales, con el propósito de simular un escenario más realista al mantener la base de datos actualizada constantemente y permitir que los clientes de la API desempeñen el papel de consumidores y productores que operan de manera continua. Esto se traduce en gráficos de Grafana que ofrecen una apariencia más auténtica gracias a la constante incorporación de nuevos datos.
 
+Los activé para probar el funcionamiento, sacar un screenshot del dashboard poblado de datos, pero los desactivé para no interferir en las pruebas una vez entregadas las soluciones propuestas.
+
 ## Pendientes
 
-* Agregar persistencia
-* Redactar la documentación de los tests
-* Terminar de comprender status_change_id y su diferencia con el process_id
 * Mejorar la calidad del código (Modularización, Comentarios, Documentación)
 * Mejorar la arquitectura
 * Agregar tests. (Caso cuando falta el header app_name, cuando falta el token)
