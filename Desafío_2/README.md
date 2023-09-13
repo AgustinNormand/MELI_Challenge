@@ -104,32 +104,32 @@ Tal como en las preguntas 2, 4, y 5.
 
 Obtenemos:
 
-![answer_question_1](https://github.com/AgustinNormand/MELI_Challenge/assets/question_1.png)
+![answer_question_1](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_1.png)
 
 ### 2. ¿Cuál fue el uptime total de las aplicaciones app2 y app5 en Q1 2021?
 
 Obtenemos:
 
-![answer_question_2](https://github.com/AgustinNormand/MELI_Challenge/assets/question_2.png)
+![answer_question_2](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_2.png)
 
 
 ### 3. ¿Cuál fue el uptime de la aplicación app4 durante Febrero de 2023?
 
 Obtenemos:
 
-![answer_question_3](https://github.com/AgustinNormand/MELI_Challenge/assets/question_3.png)
+![answer_question_3](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_3.png)
 
 ### 4. ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2021?
 
 Obtenemos:
 
-![answer_question_4](https://github.com/AgustinNormand/MELI_Challenge/assets/question_4.png)
+![answer_question_4](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_4.png)
 
 ### 5. ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2020?
 
 Obtenemos:
 
-![answer_question_5](https://github.com/AgustinNormand/MELI_Challenge/assets/question_5.png)
+![answer_question_5](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_5.png)
 
 ### Preguntas adicionales
 
@@ -139,19 +139,19 @@ Algunas preguntas similares a las anteriores, pero que si se pueden calcular, po
 
 Obtenemos:
 
-![image](https://github.com/AgustinNormand/MELI_Challenge/assets/question_6.png)
+![image](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_6.png)
 
 ### 7. ¿Cuál fue el uptime de la aplicación app5 durante Q1 del año 2022?
 
 Obtenemos:
 
-![image](https://github.com/AgustinNormand/MELI_Challenge/assets/question_7.png)
+![image](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_7.png)
 
 ### 8. ¿Cuál fue el porcentaje de Downtime para la aplicación app3 el día 20 de Febrero de 2023?
 
 Obtenemos:
 
-![image](https://github.com/AgustinNormand/MELI_Challenge/assets/question_8.png)
+![image](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/question_8.png)
 
 ## Build
 
