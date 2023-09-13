@@ -26,8 +26,8 @@ class Producer():
 
     def run(self):
         while True:
-            # Genero un valor aleatorio entre 1 y 10
-            random_value = random.randrange(1, 10 + 1)
+            # Genero un valor aleatorio entre 1 y 5
+            random_value = random.randrange(1, 5 + 1)
 
             data = {
                 'current_status': random_value,
