@@ -18,13 +18,19 @@ Se codificaron tests unitarios para la API, verificando el correcto funcionamien
 
 En este caso, se prueba que el escenario 1 de la consigna esté funcionando, es decir, que el usuario haga POST con los headers y body correspondientes, y que la respuesta de la API sea un status_code 200, y además se le retorne un process_id.
 
+![Test1](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/test_1.png)
+
 #### test_escenario_2
 
 Por otro lado, este test valida que el escenario 2 de la consigna esté funcionando, esto significa, que la API no solo permita cambios de criticidad con POST, sino también, obtenerlos mediante peticiones GET.
 
+![Test2](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/test_2.png)
+
 #### test_escenario_3
 
 El test_escenario_3, asegura que cuando una aplicación consumidora, ya se encuentra notificada del último estado, la API retorna un json vacío.
+
+![Test3](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/test_3.png)
 
 ## Producer y Consumer
 
@@ -49,4 +55,3 @@ Los activé para probar el funcionamiento, sacar un screenshot del dashboard pob
 
 * Como la consigna no indicaba que una aplicación debía cumplir su rol de productora o consumidora de manera fija, ni hacía una diferencia en el nombre de esta en los headers de ejemplo, asumí que una aplicación X puede tener ambos roles, es decir, puede hacer peticiones GET o POST, consultando o seteando estados.
 * Entiendo que los escenarios de ejemplo, son independientes entre sí, sino el segundo de estos, debería haber retornado valor 5 de criticidad, por tener exactamente el mismo timestamp que el mensaje anterior. 
-* No 
