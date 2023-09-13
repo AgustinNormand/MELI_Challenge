@@ -21,15 +21,15 @@ Es posible conectarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e
 ### Desafío 1
 
 #### Documentación
-![Screenshot from 2023-09-12 19-53-08](https://github.com/AgustinNormand/MELI_Challenge/assets/fast_api_documentation.png)
+![Screenshot from 2023-09-12 19-53-08](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/fast_api_documentation.png)
 
 #### Dashboard
-![Screenshot from 2023-09-12 19-51-21](https://github.com/AgustinNormand/MELI_Challenge/assets/api_dashboard.png)
+![Screenshot from 2023-09-12 19-51-21](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/api_dashboard.png)
 
 ### Desafío 2
 
 #### Dashboard
-![Screenshot from 2023-09-12 19-51-34](https://github.com/AgustinNormand/MELI_Challenge/assets/downtimes_dashboard.png)
+![Screenshot from 2023-09-12 19-51-34](https://github.com/AgustinNormand/MELI_Challenge/blob/main/assets/downtimes_dashboard.png)
 
 
 ## Documentación
