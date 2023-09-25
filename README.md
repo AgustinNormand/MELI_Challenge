@@ -6,15 +6,15 @@ Utilizando el token enviado por correo, o el usuario y contraseña, se pueden pr
 
 ### Desafío 1
 
-La API se encuentra disponible en el endpoint: 34.125.19.164:8000.
+La API se encuentra disponible en el endpoint: ~~34.125.19.164:8000.~~ 
 
-Acceder a la documentación en la dirección: http://34.125.19.164:8000/docs
+Acceder a la documentación en la dirección: ~~http://34.125.19.164:8000/docs~~
 
-Adicionalmente, se se encuentra disponible el [Dashboard](http://34.125.19.164:3000/d/d789e151-3b2f-41da-a6a4-d63afccd77fa/api-dashboard?orgId=1) de Grafana creado para la API.
+Adicionalmente, se se encuentra disponible el ~~[Dashboard](http://34.125.19.164:3000/d/d789e151-3b2f-41da-a6a4-d63afccd77fa/api-dashboard?orgId=1)~~ de Grafana creado para la API.
 
 ### Desafío 2
 
-Es posible conectarse [Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1) de Grafana, para visualizar los resultados.
+Es posible conectarse ~~[Dashboard](http://34.125.19.164:3000/d/e8677d8e-67d0-4f6e-8415-f9c53619aba0/downtime-dashboard?orgId=1)~~ de Grafana, para visualizar los resultados.
 
 ## Snapshots
 
